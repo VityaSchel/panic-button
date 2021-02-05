@@ -5,9 +5,10 @@
     <title>Panic Button</title>
     <meta name="viewport" content="width=device-width, initial-scale=0.86, user-scalable=no">
     <meta name="description" content="My first ReactJS project :D">
-    <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <!-- someone email me and tell how to precompile with babel for git: vityaschel@utidteam.com -->
     <link rel="stylesheet/less" type="text/css" href="index.less" />
     <script src="//cdn.jsdelivr.net/npm/less@3.13"></script>
   </head>
@@ -55,7 +56,7 @@
         return (
           <div id="panic-button">
             <Button />
-            <audio src="/panic-sound.mp3" preload="auto">Please enable sound support in your browser</audio>
+            <audio src="panic-sound.mp3" preload="auto">Please enable sound support in your browser</audio>
           </div>
         )
       }
