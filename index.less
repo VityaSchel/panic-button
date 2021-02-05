@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #8157e6, #360781);
+
+  #root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #panic-button {
+      position: relative;
+      -webkit-perspective: 227px;
+      perspective: 227px;
+
+      button {
+        transition: 0.15s ease-in background-color, 0.15s ease-in transform, 0.15s ease-in box-shadow;
+        background-color: #fff;
+        padding: 20px 50px;
+        font-size: 32pt;
+        font-family: "Roboto";
+        font-weight: 900;
+        border: 5px solid #000;
+        border-radius: 15px;
+        user-select: none;
+
+        &:focus {
+          outline: 0;
+        }
+      }
+
+      button.on {
+        background-color: #ff0000;
+        -webkit-transform: rotateX(20deg) rotateY(0deg) translateY(10px);
+        transform: rotateX(20deg) rotateY(0deg) translateY(10px);
+        box-shadow: 0px 10px 0px 0px black, 0px 10px 0px 8px #316fb0;
+      }
+
+      button.off {
+        background-color: #fe5656;
+        -webkit-transform: rotateX(20deg) rotateY(0deg);
+        transform: rotateX(20deg) rotateY(0deg);
+        box-shadow: 0px 20px 0px 0px black, 0px 20px 0px 8px #316fb0;
+      }
+    }
+  }
+}

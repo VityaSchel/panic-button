@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Panic Button</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, user-scalable=no">
+    <meta name="description" content="My first ReactJS project :D">
+    <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <link rel="stylesheet/less" type="text/css" href="index.less" />
+    <script src="//cdn.jsdelivr.net/npm/less@3.13"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script type="text/babel">
+    class Button extends React.Component {
+      constructor(props){
+        super(props);
+        this.state = {
+          button_state: 'off'
+        }
+        window.addEventListener("mouseup", () => this.handleMouseUp());
+      }
+
+      handleMouseDown() {
+        document.title = "AAAH";
+        document.querySelector("audio").play();
+        this.setState({button_state: "on"})
+      }
+
+      handleMouseUp() {
+        document.title = "Panic Button";
+        document.querySelector("audio").pause();
+        document.querySelector("audio").currentTime = 0;
+        this.setState({button_state: "off"})
+      }
+
+      render(){
+        return <button onMouseDown={() => this.handleMouseDown()}
+                       onMouseUp={() => this.handleMouseUp()}
+                       onTouchStart={() => this.handleMouseDown()}
+                       onTouchEnd={() => this.handleMouseUp()}
+                       className={this.state.button_state}>Panic button</button>
+      }
+    }
+
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+      }
+
+      render() {
+        return (
+          <div id="panic-button">
+            <Button />
+            <audio src="/panic-sound.mp3" preload="auto">Please enable sound support in your browser</audio>
+          </div>
+        )
+      }
+    }
+
+    function Render(){
+      ReactDOM.render(<App />, document.querySelector("#root"))
+    }
+
+    Render()
+  </script>
+</html>
